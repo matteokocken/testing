@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+    app:
+      build:
+        context: front
+        dockerfile: Dockerfile
+      container_name: maprimeo-app
+      restart: always
+      ports:
+        - "4000:4000"
+      command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    api:
+      build:
+        context: api
+        dockerfile: Dockerfile
+      container_name: maprimeo-api
+      volumes:
+        - /data/maprimeo:/data
+      restart: unless-stopped
+      ports:
+        - 5000:5000
+        - 5001:5001
+      networks:
+        - net-back
+    db:
+      image: mysql:5.7
+      restart: always
+      container_name: maprimeo-db
+      volumes:
+        - /data/mysql:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: GQbFPGcnEME7mEFsDdJ6sRp9SQ2kfY8f
+        MYSQL_DATABASE: maprimeo
+      networks:
+        - net-back
+networks:
+    net-back:
+        driver: bridge
