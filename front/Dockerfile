@@ -14,7 +14,7 @@ ENV API_URL=https://api.matteokocken.fr
 
 RUN npm install
 #RUN quasar build
-RUN quasar build -m pwa
+RUN quasar build
 # production stage
 FROM nginx:1.17.5-alpine as production-stage
 COPY --from=build-stage /app/dist/pwa /usr/share/nginx/html
