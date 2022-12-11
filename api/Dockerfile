@@ -17,7 +17,7 @@ ENV JWT_SECRET=yqmYtrxVQeXApFj2GRpd
 ENV ENVIRONMENT=production
 
 ENV APP_URL=https://app.matteokocken.fr
-ENV API_URL=https://api.matteokocken.fr
+ENV API_URL=https://api.matteokocken.fr:5000
 
 ARG build_number
 ENV APP_VERSION=$build_number
