@@ -22,6 +22,7 @@ COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
 COPY core.conf /etc/nginx/conf.d/core.conf
 COPY proxy.conf /etc/nginx/conf.d/proxy.conf
 COPY app.conf /etc/nginx/conf.d/app.conf
+COPY api.conf /etc/nginx/conf.d/api.conf
 
-EXPOSE 80
+EXPOSE 4000
 CMD ["nginx", "-g", "daemon off;"]
