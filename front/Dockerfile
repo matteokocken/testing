@@ -19,10 +19,7 @@ RUN quasar build
 FROM nginx:1.17.5-alpine as production-stage
 COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
 #COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
-COPY core.conf /etc/nginx/conf.d/core.conf
-COPY proxy.conf /etc/nginx/conf.d/proxy.conf
-COPY app.conf /etc/nginx/conf.d/app.conf
-COPY api.conf /etc/nginx/conf.d/api.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 4000
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
