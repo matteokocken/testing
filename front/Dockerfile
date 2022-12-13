@@ -8,7 +8,7 @@ COPY . .
 FROM develop-stage as build-stage
 
 ENV ENVIRONMENT=production
-ENV APP_URL=http://app.matteokocken.fr:4000
+ENV APP_URL=http://app.matteokocken.fr
 ENV API_URL=http://api.matteokocken.fr:5000
 
 
@@ -21,5 +21,5 @@ COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
 #COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+EXPOSE 443
 CMD ["nginx", "-g", "daemon off;"]
