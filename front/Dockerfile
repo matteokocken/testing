@@ -8,8 +8,8 @@ COPY . .
 FROM develop-stage as build-stage
 
 ENV ENVIRONMENT=production
-ENV APP_URL=http://app.matteokocken.fr
-ENV API_URL=http://api.matteokocken.fr:5000
+ENV APP_URL=https://app.matteokocken.fr
+ENV API_URL=https://api.matteokocken.fr
 
 
 RUN npm install
